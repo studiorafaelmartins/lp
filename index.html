@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rafael Martins | Nossos Serviços</title>
 
   <!-- FONTS -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@500;700&display=swap"
+    rel="stylesheet">
 
   <style>
     :root {
@@ -15,23 +18,34 @@
       --blue: #002d6b;
       --footer-gray: #00000;
       --subtitle-gray: #666;
-      
 
       /* 🔧 ajustes rápidos do carrossel */
-      --card-w: 240px;                /* LARGURA do card do carrossel */
-      --card-h: 240px;                /* ALTURA do card do carrossel */
-      --card-radius: 14px;            /* Raio dos cantos */
-      --card-border: 1.5px;             /* Espessura do traçado */
-      --card-gradient: 135deg, #c1c1c1, #f9f9f9; /* Cores do degradê do traçado */
-      --scroll-speed: 40s;            /* Velocidade da animação */
-      --gap: 20px;                    /* Espaço entre cards */
-    
+      --card-w: 240px;
+      /* (não usado, mantido p/ compatibilidade) */
+      --card-h: 250px;
+      /* ALTURA fixa do card do carrossel */
+      --card-radius: 14px;
+      /* Raio dos cantos */
+      --card-border: 1.5px;
+      /* Espessura do traçado */
+      --card-gradient: 135deg, #c1c1c1, #f9f9f9;
+      /* Cores do degradê do traçado */
+      --scroll-speed: 30s;
+      /* Velocidade da animação */
+      --gap: 20px;
+      /* Espaço entre cards */
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
-      background: radial-gradient(circle, #dddddd, #ffffff); /* fundo do site*/
+      background: radial-gradient(circle, #cac9c9, #ffffff);
+      /* fundo do site*/
       color: var(--black);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
@@ -45,67 +59,88 @@
       flex-direction: column;
       align-items: center;
       gap: 15px;
-      
     }
-    header img.logo { height: 60px; width: auto; object-fit: contain; }
+
+    header img.logo {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+    }
+
     header h1 {
       font-family: 'Playfair Display', serif;
       font-size: 4rem;
       font-weight: 700;
       letter-spacing: 2px;
-      background: linear-gradient(90deg, #0071e3, #005bb5);
+      background: linear-gradient(90deg, #0071e3, #002f5e); /* troca de cor do nome*/
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+
     .portfolio-btn {
       display: inline-block;
       margin: 20px 0 10px;
       padding: 12px 28px;
-      background: linear-gradient(90deg, #0071e3, #005bb5);
+      background: linear-gradient(90deg, #0071e3, #002f5e); /* troca de cor do botão inicial*/
       color: var(--white);
       border-radius: 999px;
       font-size: 1rem;
       font-weight: 500;
       text-decoration: none;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0,113,227,0.3);
+      box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
     }
+
     .portfolio-btn:hover {
-      background: linear-gradient(90deg,#005bb5,#003f87);
+      background: linear-gradient(90deg, #0071e3, #002f5e);
       transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0,91,181,0.4);
+      box-shadow: 0 6px 16px rgba(0, 91, 181, 0.4);
     }
 
     /* CARROSSEL */
     #portfolio-carousel {
       padding: 50px 0;
-      background: #f9f9f9;
       overflow: hidden;
-        background: transparent; /* <-- deixa transparente */
+      background: transparent;      /* transparente  */
     }
-    .carousel-wrapper { position: relative; width: 100%; }
+
+    .carousel-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
     .carousel-track {
       display: flex;
       gap: var(--gap);
       flex-wrap: nowrap;
-      width: max-content;                 /* garante largura do conteúdo */
+      width: max-content;
+      /* garante largura do conteúdo */
       animation: marquee var(--scroll-speed) linear infinite;
       will-change: transform;
     }
-    .row2 { animation: marquee-reverse var(--scroll-speed) linear infinite; margin-top: 20px; }
 
-    /* Card do carrossel */
+    .row2 {
+      animation: marquee-reverse var(--scroll-speed) linear infinite;
+      margin-top: 20px;
+    }
+
+    /* Card do carrossel (altura fixa, largura automática) */
     .carousel-track .card {
       position: relative;
       flex: 0 0 auto;
-      width: var(--card-w);
       height: var(--card-h);
+      /* altura fixa */
+      width: auto;
+      /* largura automática (sem min/max) */
       border-radius: var(--card-radius);
-      overflow: hidden; /* para a imagem respeitar o raio */
-      background: #eee;
-      isolation: isolate; /* garante camada para o ::before */
+      overflow: hidden;
+      /* para a imagem respeitar o raio */
+      background: transparent;
+      isolation: isolate;
+      /* garante camada para o ::before */
     }
-    /* Traçado em degradê com cantos arredondados */
+
+    /* Traçado em degradê com cantos arredondados (preservado) */
     .carousel-track .card::before {
       content: "";
       position: absolute;
@@ -118,59 +153,100 @@
         linear-gradient(#000 0 0) content-box,
         linear-gradient(#000 0 0);
       -webkit-mask-composite: xor;
-              mask-composite: exclude;
+      mask-composite: exclude;
       pointer-events: none;
       z-index: 1;
     }
+
+    /* Imagem: mostra tudo dentro do card, mantendo a altura e sem cortar */
     .carousel-track .card img {
-      width: 100%;
       height: 100%;
-      object-fit: cover;
+      width: auto;
+      object-fit: contain;
+      /* mostra a imagem inteira */
+      object-position: center;
       display: block;
-      border-radius: inherit; /* ajuda a evitar quinas visuais */
+      border-radius: inherit;
+      /* evita quinas visuais */
     }
 
     /* Animações contínuas sem “vazio” */
     @keyframes marquee {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); } /* desloca exatamente um “bloco” (A) */
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+
+      /* desloca exatamente um “bloco” (A) */
     }
+
     @keyframes marquee-reverse {
-      0%   { transform: translateX(-50%); }
-      100% { transform: translateX(0); }
+      0% {
+        transform: translateX(-50%);
+      }
+
+      100% {
+        transform: translateX(0);
+      }
     }
 
     /* GRID DE SERVIÇOS */
-    p { text-align:center; font-size:1.5rem; margin:40px 0 20px; }
+    p {
+      text-align: center;
+      font-size: 1.5rem;
+      margin: 40px 0 20px;
+    }
+
     .grid {
       max-width: 1100px;
       margin: 0 auto 40px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 30px;
       padding: 0 20px;
       text-align: center;
     }
+
     .card-service {
-      background: rgba(255,255,255,0.6);
+      background: rgba(255, 255, 255, 0.6);
       backdrop-filter: blur(12px);
       border-radius: 24px;
       padding: 30px;
       text-align: center;
       transition: all 0.4s ease;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
     }
+
     .card-service:hover {
       transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
     }
-    .card-service .title { font-weight: 600; font-size: 1.2rem; margin-bottom: 10px; }
-    .card-service .desc { font-size: 0.95rem; color: #555; margin-bottom: 15px; }
-    .card-service .price { font-weight: 600; font-size: 1.1rem; color: var(--blue); }
+
+    .card-service .title {
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .card-service .desc {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    .card-service .price {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--blue);
+    }
+
     .add-btn {
       margin-top: 15px;
       display: inline-block;
-      background: linear-gradient(90deg, #0071e3, #005bb5);
+      background: linear-gradient(90deg, #0071e3, #002f5e); /* botão de add*/
       color: var(--white);
       padding: 12px 22px;
       border-radius: 999px;
@@ -179,19 +255,24 @@
       cursor: pointer;
       text-decoration: none;
       transition: all .3s ease;
-      box-shadow: 0 4px 12px rgba(0,113,227,0.3);
+      box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
     }
+
     .add-btn:hover {
-      background: linear-gradient(90deg,#005bb5,#003f87);
+      background: linear-gradient(90deg, #005bb5, #003f87);
       transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0,91,181,0.4);
+      box-shadow: 0 6px 16px rgba(0, 91, 181, 0.4);
     }
 
     /* CHECKOUT */
-    .checkout { text-align:center; margin:40px 0; }
+    .checkout {
+      text-align: center;
+      margin: 40px 0;
+    }
+
     .checkout button {
-      background: linear-gradient(90deg, #0071e3, #005bb5);
-      border:none;
+      background: linear-gradient(90deg, #0071e3, #002f5e);
+      border: none;
       color: var(--white);
       padding: 16px 30px;
       border-radius: 999px;
@@ -199,10 +280,11 @@
       font-weight: 600;
       cursor: pointer;
       transition: all .3s;
-      box-shadow: 0 6px 16px rgba(0,113,227,0.3);
+      box-shadow: 0 6px 16px rgba(0, 113, 227, 0.3);
     }
+
     .checkout button:hover {
-      background: linear-gradient(90deg,#004c98,#002d6b);
+      background: linear-gradient(90deg, #004c98, #002d6b);
       transform: translateY(-3px);
     }
 
@@ -217,6 +299,7 @@
       align-items: center;
       gap: 15px;
     }
+
     footer .links a {
       color: var(--black);
       text-decoration: none;
@@ -225,31 +308,48 @@
       opacity: 0.85;
       transition: opacity .3s;
     }
-    footer .links a:hover { opacity: 1; text-decoration: underline; }
+
+    footer .links a:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
     footer .policies {
       font-size: 0.85rem;
       margin-top: 10px;
       line-height: 1.5;
     }
 
-    /* Responsivo: as variáveis também controlam o tamanho menor */
+    /* Responsivo: mantemos a altura do card fixa em 250px */
     @media (max-width: 768px) {
-      header h1 { font-size: 3rem; }
-      .portfolio-btn { padding:10px 20px; font-size:0.9rem; }
-      :root { --card-w: 160px; --card-h: 160px; }
+      header h1 {
+        font-size: 3rem;
+      }
+
+      .portfolio-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
     }
+
     @media (max-width: 480px) {
-      header h1 { font-size: 2.2rem; }
-      .grid { grid-template-columns: 1fr; gap: 15px; }
-      :root { --card-w: 130px; --card-h: 130px; }
+      header h1 {
+        font-size: 2.2rem;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <!-- HEADER -->
   <header>
-    <img src="https://i.ibb.co/4ZmfXtd3/LOGO-RT-NOVA.png" alt="Rafael Martins Logo" class="logo">
+    <img src="LOGO-RT-azul.png" alt="Rafael Martins Logo" class="logo">
     <h1>Rafael Martins</h1>
     <a href="https://www.behance.net/rafaeltoretto" class="portfolio-btn" target="_blank">Conheça meu Portfólio</a>
   </header>
@@ -257,9 +357,8 @@
   <!-- CARROSSEL -->
   <section id="portfolio-carousel">
     <div class="carousel-wrapper">
-      <!-- Linha 1: A + A (DUPLICADO PARA MARQUEE CONTÍNUO) -->
-      <div class="carousel-track row1">
-        <!-- Bloco A -->
+  <div class="carousel-track row1">
+        <!-- cards linha 1 -->
         <div class="card"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/7eda66207800855.66e36e981d8ad.png" alt="Trabalho 1"></div>
         <div class="card"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/734f5d207802217.66e378524b4d8.png" alt="Trabalho 2"></div>
         <div class="card"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/4d7c9a207802217.66e3785249cf2.png" alt="Trabalho 3"></div>
@@ -270,22 +369,6 @@
         <div class="card"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/71f77f207801923.66e375cc8535c.png" alt="Trabalho 8"></div>
         <div class="card"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5f1a61207801923.66e3765123a26.png" alt="Trabalho 9"></div>
         <div class="card"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/622d54207802217.67ac9fc3e03f5.png" alt="Trabalho 10"></div>
-        <!-- Bloco A (duplicado) -->
-        <div class="card" aria-hidden="true"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/7eda66207800855.66e36e981d8ad.png" alt=""></div>
-        <div class="card" aria-hidden="true"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/734f5d207802217.66e378524b4d8.png" alt=""></div>
-        <div class="card" aria-hidden="true"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/4d7c9a207802217.66e3785249cf2.png" alt=""></div>
-        <div class="card" aria-hidden="true"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/fa8354207802217.66e37852493a2.png" alt=""></div>
-        <div class="card" aria-hidden="true"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/b19aed207802217.66e3785248119.png" alt=""></div>
-        <div class="card" aria-hidden="true"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/6149a1207802217.66e378524872d.png" alt=""></div>
-        <div class="card" aria-hidden="true"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/3c7537207802217.66e3785246cbf.png" alt=""></div>
-        <div class="card" aria-hidden="true"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/71f77f207801923.66e375cc8535c.png" alt=""></div>
-        <div class="card" aria-hidden="true"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5f1a61207801923.66e3765123a26.png" alt=""></div>
-        <div class="card" aria-hidden="true"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/622d54207802217.67ac9fc3e03f5.png" alt=""></div>
-      </div>
-
-      <!-- Linha 2: A + A (DUPLICADO PARA MARQUEE CONTÍNUO) -->
-      <div class="carousel-track row2">
-        <!-- Bloco A -->
         <div class="card"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/4cbafd207801923.678665de96250.png" alt="Trabalho 11"></div>
         <div class="card"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/f9a1d0207800855.66e372d1f27ab.png" alt="Trabalho 12"></div>
         <div class="card"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/f941ff207800855.678664e8e8b19.png" alt="Trabalho 13"></div>
@@ -296,18 +379,31 @@
         <div class="card"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/d33d61146616741.62c32d0641e44.png" alt="Trabalho 18"></div>
         <div class="card"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/c89652146616741.66e37475ddc9e.png" alt="Trabalho 19"></div>
         <div class="card"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/e73c75146616741.62b35f7277b47.png" alt="Trabalho 20"></div>
-        <!-- Bloco A (duplicado) -->
-        <div class="card" aria-hidden="true"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/4cbafd207801923.678665de96250.png" alt=""></div>
-        <div class="card" aria-hidden="true"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/f9a1d0207800855.66e372d1f27ab.png" alt=""></div>
-        <div class="card" aria-hidden="true"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/f941ff207800855.678664e8e8b19.png" alt=""></div>
-        <div class="card" aria-hidden="true"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/1ed36b207800855.678664e8e641d.png" alt=""></div>
-        <div class="card" aria-hidden="true"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/3f9d87207800855.678664e8e3b5c.png" alt=""></div>
-        <div class="card" aria-hidden="true"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/c23983207800855.66e36e981c682.png" alt=""></div>
-        <div class="card" aria-hidden="true"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/2fa299207800855.67aca4e92fe1f.png" alt=""></div>
-        <div class="card" aria-hidden="true"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/d33d61146616741.62c32d0641e44.png" alt=""></div>
-        <div class="card" aria-hidden="true"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/c89652146616741.66e37475ddc9e.png" alt=""></div>
-        <div class="card" aria-hidden="true"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/e73c75146616741.62b35f7277b47.png" alt=""></div>
+    
       </div>
+
+      <div class="carousel-track row2">
+        <!-- cards linha 2 -->
+        <div class="card"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/4cbafd207801923.678665de96250.png" alt="Trabalho 11"></div>
+        <div class="card"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/f9a1d0207800855.66e372d1f27ab.png" alt="Trabalho 12"></div>
+        <div class="card"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/f941ff207800855.678664e8e8b19.png" alt="Trabalho 13"></div>
+        <div class="card"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/1ed36b207800855.678664e8e641d.png" alt="Trabalho 14"></div>
+        <div class="card"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/3f9d87207800855.678664e8e3b5c.png" alt="Trabalho 15"></div>
+        <div class="card"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/c23983207800855.66e36e981c682.png" alt="Trabalho 16"></div>
+        <div class="card"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/2fa299207800855.67aca4e92fe1f.png" alt="Trabalho 17"></div>
+        <div class="card"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/d33d61146616741.62c32d0641e44.png" alt="Trabalho 18"></div>
+        <div class="card"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/c89652146616741.66e37475ddc9e.png" alt="Trabalho 19"></div>
+        <div class="card"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/e73c75146616741.62b35f7277b47.png" alt="Trabalho 20"></div>
+        <div class="card"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/7eda66207800855.66e36e981d8ad.png" alt="Trabalho 1"></div>
+        <div class="card"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/734f5d207802217.66e378524b4d8.png" alt="Trabalho 2"></div>
+        <div class="card"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/4d7c9a207802217.66e3785249cf2.png" alt="Trabalho 3"></div>
+        <div class="card"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/fa8354207802217.66e37852493a2.png" alt="Trabalho 4"></div>
+        <div class="card"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/b19aed207802217.66e3785248119.png" alt="Trabalho 5"></div>
+        <div class="card"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/6149a1207802217.66e378524872d.png" alt="Trabalho 6"></div>
+        <div class="card"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/3c7537207802217.66e3785246cbf.png" alt="Trabalho 7"></div>
+        <div class="card"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/71f77f207801923.66e375cc8535c.png" alt="Trabalho 8"></div>
+        <div class="card"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5f1a61207801923.66e3765123a26.png" alt="Trabalho 9"></div>
+        <div class="card"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/622d54207802217.67ac9fc3e03f5.png" alt="Trabalho 10"></div>
     </div>
   </section>
 
@@ -343,14 +439,14 @@
       <div class="desc">Captação aérea profissional</div>
       <div class="price">A consultar</div>
       <a class="add-btn" onclick="addToCart('Piloto de Drone - Valor a consultar')">Adicionar</a>
-    </div> 
+    </div>
     <div class="card-service">
       <div class="title">Motion Designer</div>
       <div class="desc">Criação de animações e vídeos dinâmicos para diversos fins</div>
       <div class="price">A consultar</div>
       <a class="add-btn" onclick="addToCart('Motion Designer - R$1.200')">Adicionar</a>
     </div>
-     <div class="card-service">
+    <div class="card-service">
       <div class="title">Monte seu pacote</div>
       <div class="desc">Criação de animações e vídeos dinâmicos para diversos fins</div>
       <div class="price">A consultar</div>
@@ -360,7 +456,8 @@
       <div class="title">Edição de vídeo</div>
       <div class="desc">Captação aérea profissional</div>
       <div class="price">A consultar</div>
-      <a class="add-btn" onclick="addToCart('Piloto de Drone - Valor a consultar')">Adicionar</a></div>
+      <a class="add-btn" onclick="addToCart('Piloto de Drone - Valor a consultar')">Adicionar</a>
+    </div>
   </div>
 
   <!-- CHECKOUT -->
@@ -370,7 +467,7 @@
 
   <!-- RODAPÉ -->
   <footer>
- <hr style="border: 0; height: 1px; background: #ddd; width: 100%; margin-bottom: 20px;">
+    <hr style="border: 0; height: 1px; background: #ddd; width: 100%; margin-bottom: 20px;">
     <div class="links">
       <a href="https://wa.me/5531992414061" target="_blank">WhatsApp</a> |
       <a href="http://instagram.com/rafaelltoretto" target="_blank">Instagram</a> |
@@ -380,8 +477,8 @@
     <div class="policies">
       Copyright © 2025 Rafael Martins. Todos os direitos reservados.<br>
       Rafael Martins Design Ltda. CNPJ: 60.315.568/0001-23<br>
-      <a href="https://www.rafaelmartins.com.br/politica-de-privacidade" target="_blank">Política de privacidade</a> | 
-      <a href="https://www.rafaelmartins.com.br/politica-de-vendas" target="_blank">Política de vendas</a> 
+      <a href="https://www.rafaelmartins.com.br/politica-de-privacidade" target="_blank">Política de privacidade</a> |
+      <a href="https://www.rafaelmartins.com.br/politica-de-vendas" target="_blank">Política de vendas</a>
     </div>
   </footer>
 
@@ -403,4 +500,5 @@
     }
   </script>
 </body>
+
 </html>
