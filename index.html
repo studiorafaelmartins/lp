@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title> Studio Rafael Martins </title>
+  <title>Studio Rafael Martins  </title>
  <!-- FAVICON -->
   <link rel="shortcut icon" href="favicon rt dourado.ico" type="image/x-icon">
   <!-- FONTS -->
@@ -242,26 +242,41 @@
       color: var(--blue);
     }
 
-    .add-btn {
-      margin-top: 15px;
-      display: inline-block;
-      background: linear-gradient(90deg, #0071e3, #002f5e); /* botão de add*/
-      color: var(--white);
-      padding: 12px 22px;
-      border-radius: 999px;
-      font-size: 0.95rem;
-      font-weight: 500;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all .3s ease;
-      box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
-    }
+.card-service {
+  display: flex;              /* flex container */
+  flex-direction: column;     /* vertical */
+  justify-content: space-between; /* garante que o botão fique no final */
+  align-items: center;        /* centraliza horizontalmente todos os elementos */
+  background: rgba(255,255,255,0.6);
+  border-radius: 24px;
+  padding: 30px;
+  height: 300px;              /* altura fixa para todos os cards */
+  box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+  text-align: center;
+}
 
-    .add-btn:hover {
-      background: linear-gradient(90deg, #005bb5, #003f87);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0, 91, 181, 0.4);
-    }
+.add-btn {
+  display: inline-block;
+  background: linear-gradient(90deg, #0071e3, #002f5e);
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
+}
+
+.add-btn:hover {
+  background: linear-gradient(90deg, #005bb5, #003f87);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 91, 181, 0.4);
+}
+
+
+
 
     /* CHECKOUT */
     .checkout {
@@ -411,52 +426,53 @@
   <div class="grid">
     <div class="card-service">
       <div class="title">Post para Rede Social</div>
-      <div class="desc">Arte estática personalizada para rede social</div>
+      <div class="desc">Arte estática personalizada para redes sociais (roteiro e copy fornecidos pelo cliente)</div>
       <div class="price">R$ 60</div>
       <a class="add-btn" onclick="addToCart('Post para Rede Social - R$45')">Adicionar</a>
     </div>
     <div class="card-service">
       <div class="title">Pacote Mensal (até 12 posts)</div>
-      <div class="desc">Conteúdo sequencial para engajamento</div>
+      <div class="desc">Criação de artes para social media, com alinhamento em reunião. (copy fornecidos pelo cliente)</div>
       <div class="price">R$ 650</div>
       <a class="add-btn" onclick="addToCart('Carrossel até 5 páginas - R$60')">Adicionar</a>
     </div>
     <div class="card-service">
       <div class="title">Pacote Mensal (até 20 posts)</div>
-      <div class="desc">Storytelling completo com CTA</div>
+      <div class="desc">Criação de artes para social media, com alinhamento em reunião. (copy fornecidos pelo cliente)</div>
       <div class="price">R$ 850</div>
       <a class="add-btn" onclick="addToCart('Carrossel até 10 páginas - R$120')">Adicionar</a>
     </div>
     <div class="card-service">
       <div class="title">Pacote Mensal (até 30 posts)</div>
-      <div class="desc">Presença contínua nas redes com identidade visual</div>
+      <div class="desc">Criação de artes para social media, com alinhamento em reunião. (copy fornecidos pelo cliente)</div>
       <div class="price">R$ 950</div>
       <a class="add-btn" onclick="addToCart('Pacote Mensal (12 posts) - R$500')">Adicionar</a>
     </div>
     <div class="card-service">
-      <div class="title">Piloto de Drone</div>
-      <div class="desc">Captação aérea profissional</div>
+      <div class="title">Captação Aérea com Drone</div>
+      <div class="desc">Captação aérea para valorizar seu evento ou negócio, oferecendo uma perspectiva única.</div>
       <div class="price">A consultar</div>
       <a class="add-btn" onclick="addToCart('Piloto de Drone - Valor a consultar')">Adicionar</a>
     </div>
     <div class="card-service">
       <div class="title">Motion Designer</div>
-      <div class="desc">Criação de animações e vídeos dinâmicos para diversos fins</div>
+      <div class="desc">Animações e vídeos criativos para potencializar conteúdo.</div>
       <div class="price">A consultar</div>
       <a class="add-btn" onclick="addToCart('Motion Designer - R$1.200')">Adicionar</a>
     </div>
-    <div class="card-service">
-      <div class="title">Monte seu pacote</div>
-      <div class="desc">Criação de animações e vídeos dinâmicos para diversos fins</div>
-      <div class="price">A consultar</div>
-      <a class="add-btn" onclick="addToCart('Motion Designer - R$1.200')">Adicionar</a>
-    </div>
-    <div class="card-service">
+       <div class="card-service">
       <div class="title">Edição de vídeo</div>
-      <div class="desc">Captação aérea profissional</div>
+      <div class="desc">Edição profissional de vídeos (material bruto enviado pelo cliente).</div>
       <div class="price">A consultar</div>
       <a class="add-btn" onclick="addToCart('Piloto de Drone - Valor a consultar')">Adicionar</a>
     </div>
+    <div class="card-service">
+      <div class="title">Monte seu pacote</div>
+      <div class="desc">ombine serviços e personalize conforme sua necessidade.</div>
+      <div class="price">A consultar</div>
+      <a class="add-btn" onclick="addToCart('Motion Designer - R$1.200')">Adicionar</a>
+    </div>
+
   </div>
 
   <!-- CHECKOUT -->
@@ -501,4 +517,3 @@
 </body>
 
 </html>
-
